@@ -13,14 +13,14 @@ twoDaysSerie$Global_active_power<-as.double(twoDaysSerie$Global_active_power)
 twoDaysSerie$Formatted_date<-dmy_hms(paste(twoDaysSerie$Date, twoDaysSerie$Time))
 
 #It creates a new plot in a new png device 
-png(filename = "plot2.png",width = 480, height = 480)
+png(filename = "plot3.png",width = 480, height = 480)
 with(twoDaysSerie,
-     {plot(twoDaysSerie$Formatted_date,twoDaysSerie$Global_active_power,type="n",ylab="Global active power (Kilowatts)",xlab = "")
-        lines(twoDaysSerie$Formatted_date,twoDaysSerie$Global_active_power)
-        
-     }
-     )
+{plot(twoDaysSerie$Formatted_date,twoDaysSerie$Sub_metering_1,type="n",ylab="Energy sub metering",xlab = "")
+ lines(twoDaysSerie$Formatted_date,twoDaysSerie$Sub_metering_1,col="black")
+ lines(twoDaysSerie$Formatted_date,twoDaysSerie$Sub_metering_2,col="red")
+ lines(twoDaysSerie$Formatted_date,twoDaysSerie$Sub_metering_3,col="blue")
+ legend("topright",c("Sub_metering 1","Sub_metering_2","Sub_metering_3"),lty=c(1,1),lwd=c(2.5,2.5),col=c("black","red","blue"))
+}
+)
 
 dev.off()
-
-
